@@ -1,14 +1,21 @@
 import pybullet as p
-import time 
+import time
+import pybullet_data
+from generate import *
+import pyrosim.pyrosim as pyrosim
 i = 0
 
 physicsClient = p.connect(p.GUI)
-p.setGravity(0,0,-9.9)
-p.loadSDF("box.sdf")
-for x in range(1000):
+p.setAdditionalSearchPath(pybullet_data.getDataPath())
+p.setGravity(0, 0, -8)
+planeId = p.loadURDF("plane.urdf")
+robotId = p.loadURDF("body.urdf")
+worldId = p.loadSDF("world.sdf")
+
+
+for x in range(50000):
     p.stepSimulation()
-    time.sleep(1/50)
-    i += 1
-    print(i)
-    
+    Create_Robot()
+    time.sleep(1 / 60)
+
 p.disconnect()
