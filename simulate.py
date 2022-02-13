@@ -14,6 +14,7 @@ p.setGravity(0, 0, -9.8)
 planeId = p.loadURDF("plane.urdf")
 robotId = p.loadURDF("body.urdf")
 worldId = p.loadSDF("world.sdf")
+
 pyrosim.Prepare_To_Simulate(robotId)
 
 backLegSensorValues = numpy.zeros(500)
@@ -21,14 +22,12 @@ frontLegSensorValues = numpy.zeros(500)
 
 
 for x in range(500):
-    create_robot()
+    time.sleep(1 / 1000)
     p.stepSimulation()
     backLegSensorValues[x] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
     frontLegSensorValues[x] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
-    print(backLegSensorValues)
-    print(frontLegSensorValues)
-    time.sleep(1 / 1000)
-
+    pyrosim.Set_Motor_For_Joint(bodyIndex=robotId, jointName="Torso_BackLeg", controlMode=p.POSITION_CONTROL,
+                                targetPosition=0.0, maxForce=500)
 numpy.save(os.path.join('data', "SensorValues"), backLegSensorValues)
 numpy.save(os.path.join('data', "FrontSensors"), frontLegSensorValues)
 
