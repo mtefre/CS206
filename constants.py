@@ -17,3 +17,6 @@ backLegSensorValues = numpy.zeros(length)
 frontLegSensorValues = numpy.zeros(length)
 
 graphline = numpy.linspace(0, 2*numpy.pi, length)
+
+valuesF = []
+valuesB = []
