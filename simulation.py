@@ -18,6 +18,7 @@ class SIMULATION:
         self.world = WORLD()
         self.robot = ROBOT()
 
+
     def Run(self):
         for i in range(0, c.length):
             time.sleep(1 / 600)
@@ -29,6 +30,7 @@ class SIMULATION:
 
             p.stepSimulation()
             self.robot.Sense(i)
+            self.robot.Think()
             self.robot.Act(i)
 
             #pyrosim.Set_Motor_For_Joint(bodyIndex=r.robotId,

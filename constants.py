@@ -2,7 +2,7 @@
 import numpy
 
 
-length = 2000
+length = 1000
 
 
 amplitudeF = numpy.pi/2
