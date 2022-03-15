@@ -1,8 +1,8 @@
-from pyrosim.neuron  import NEURON
+from pyrosim.neuron import NEURON
 
 from pyrosim.synapse import SYNAPSE
 
-class NEURAL_NETWORK: 
+class NEURAL_NETWORK:
 
     def __init__(self,nndfFileName):
 
@@ -29,12 +29,23 @@ class NEURAL_NETWORK:
         print("")
 
     def Update(self):
-        for neurons in self.neurons:
-            if self.neurons[neurons].Is_Sensor_Neuron():
-                self.neurons[neurons].Update_Sensor_Neuron()
+        for neuron in self.neurons:
+            if self.neurons[neuron].Is_Sensor_Neuron():
+                self.neurons[neuron].Update_Sensor_Neuron()
             else:
-                self.neurons[neurons].Update_Hidden_Or_Motor_Neuron()
+                self.neurons[neuron].Update_Hidden_Or_Motor_Neuron()
 
+    def Get_Neuron_Names(self):
+        return self.neurons.keys()
+
+    def Is_Motor_Neuron(self, n):
+        return NEURON(n).Is_Motor_Neuron()
+
+    def Get_Motor_Neurons_Joint(self, n):
+        return NEURON(n).Get_Joint_Name()
+
+    def Get_Value_Of(self, n):
+        return NEURON(n).Get_Value()
 # ---------------- Private methods --------------------------------------
 
     def Add_Neuron_According_To(self,line):
