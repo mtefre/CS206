@@ -18,6 +18,8 @@ class NEURAL_NETWORK:
 
         f.close()
 
+
+
     def Print(self):
 
         self.Print_Sensor_Neuron_Values()
@@ -33,19 +35,19 @@ class NEURAL_NETWORK:
             if self.neurons[neuron].Is_Sensor_Neuron():
                 self.neurons[neuron].Update_Sensor_Neuron()
             else:
-                self.neurons[neuron].Update_Hidden_Or_Motor_Neuron()
+                self.neurons[neuron].Update_Hidden_Or_Motor_Neuron(self.neurons, self.synapses)
 
     def Get_Neuron_Names(self):
         return self.neurons.keys()
 
-    def Is_Motor_Neuron(self, n):
-        return NEURON(n).Is_Motor_Neuron()
+    def Is_Motor_Neuron(self, neuronName):
+        return NEURON(neuronName).Is_Motor_Neuron()
 
-    def Get_Motor_Neurons_Joint(self, n):
-        return NEURON(n).Get_Joint_Name()
+    def Get_Motor_Neurons_Joint(self, neuronName):
+        return NEURON(neuronName).Get_Name()
 
-    def Get_Value_Of(self, n):
-        return NEURON(n).Get_Value()
+    def Get_Value_Of(self, neuronName):
+        return NEURON(neuronName).Get_Value()
 # ---------------- Private methods --------------------------------------
 
     def Add_Neuron_According_To(self,line):
