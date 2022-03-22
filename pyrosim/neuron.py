@@ -84,14 +84,6 @@ class NEURON:
         mult = neurons * synapses
         self.Add_To_Value(mult)
 
-
-
-
-
-
-
-
-
 #-------------------------- Private methods -------------------------
 
     def Determine_Name(self,line):
