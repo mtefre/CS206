@@ -6,6 +6,7 @@ import pyrosim.pyrosim as pyrosim
 
 import pyrosim.constants as c
 
+
 class NEURON: 
 
     def __init__(self,line):
@@ -70,17 +71,23 @@ class NEURON:
 
     def Update_Hidden_Or_Motor_Neuron(self, neurons, synapses):
         self.Set_Value(0.0)
-        print(self.Get_Name())
+
         for synp in synapses:
-            if synp == self.Get_Name():
-                #self.Allow_Presynaptic_Neuron_To_Influence_Me(neurons, synapses)
-                for neuron in neurons:
-                    print(neuron)
+            if self.Get_Name() == synp[1]:
+                self.Allow_Presynaptic_Neuron_To_Influence_Me(neurons[synp[0]].Get_Value(), synapses[synp].Get_Weight())
+        self.Threshold()
+
+
 
 
     def Allow_Presynaptic_Neuron_To_Influence_Me(self, neurons, synapses):
-        print(synapses)
-        exit()
+        mult = neurons * synapses
+        self.Add_To_Value(mult)
+
+
+
+
+
 
 
 
