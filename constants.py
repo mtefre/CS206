@@ -15,5 +15,4 @@ phaseOffsetB = numpy.pi/2
 
 graphline = numpy.linspace(0, 2*numpy.pi, length)
 
-valuesF = []
-valuesB = []
+numberOfGenerations = 10
