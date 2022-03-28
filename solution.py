@@ -44,9 +44,9 @@ class SOLUTION:
 
         pyrosim.End()
 
-    def Evaluate(self):
+    def Evaluate(self, directOrGui):
         self.Create_Brain()
-        os.system("python simulate.py")
+        os.system("python simulate.py " + directOrGui)
         file = open("fitness.txt", "r")
         self.fitness = file.readline().strip("\n")
         file.close()

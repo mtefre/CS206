@@ -48,7 +48,7 @@ class ROBOT:
         print(positionLinkOfZero[0], xCooridnateOfLinkZero[1])
         f = open("fitness.txt", "w")
         f.write(str(xCooridnateOfLinkZero[1]))
-        exit()
+
 
 
 
