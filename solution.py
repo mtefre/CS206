@@ -15,6 +15,9 @@ class SOLUTION:
 
 
 
+    def Set_ID(self, assignedID):
+        self.myID = assignedID
+
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
         pyrosim.Send_Cube(name="box", pos=[1, 3, 0.5], size=[1, 1, 1])
@@ -50,7 +53,7 @@ class SOLUTION:
 
     def Start_Simulation(self, directOrGui):
         self.Create_Brain()
-        os.system("start /B python simulate.py " + directOrGui + " " + self.myID)
+        os.system("start /B python simulate.py {} {}".format(directOrGui, self.myID))
 
 
     def Waiting_For_Simulation_To_End(self):
@@ -59,10 +62,9 @@ class SOLUTION:
             time.sleep(0.01)
 
         file = open("fitness{}.txt".format(self.myID), "r")
-        self.fitness = file.readline().strip("\n")
+        self.fitness = float(file.read())
         file.close()
-        print(self.fitness)
-        os.system("del fitness{}.txt".format(self.myID))
+        os.system('del fitness{}.txt'.format(self.myID))
 
 
     def Mutate(self):
@@ -70,8 +72,7 @@ class SOLUTION:
         col = random.randint(0,1)
         self.weight[row][col] = random.random() * 2 - 1
 
-    def Set_ID(self, assignedID):
-        self.myID = assignedID
+
 
 
 
