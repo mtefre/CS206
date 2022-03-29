@@ -6,11 +6,12 @@ import copy
 class HILL_CLIMBER:
     def __init__(self):
         self.parent = SOLUTION()
+        self.Evolve()
 
     def Evolve(self):
         self.string = "DIRECT"
         self.string2 = "GUI"
-        self.parent.Evaluate(self.string)
+        self.parent.Evaluate(self.string2)
 
         for currentGeneretaion in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation()
