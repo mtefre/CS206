@@ -11,7 +11,7 @@ from robot import ROBOT
 
 class SIMULATION:
     def __init__(self, directOrGui, SolutionID):
-        self.ID = SolutionID
+        self.ID = str(SolutionID)
         if directOrGui == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
         else:
@@ -27,12 +27,15 @@ class SIMULATION:
 
     def Run(self):
         for i in range(0, c.length):
-            time.sleep(1 / 200)
+            time.sleep(1 /100)
 
             p.stepSimulation()
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act()
+
+
+
 
     def Get_Fitness(self):
         self.robot.Get_Fitness(self.ID)

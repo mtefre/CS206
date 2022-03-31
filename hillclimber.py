@@ -5,13 +5,13 @@ import copy
 
 class HILL_CLIMBER:
     def __init__(self):
-        self.parent = SOLUTION()
+        self.parent = SOLUTION(0)
         self.Evolve()
 
     def Evolve(self):
         self.string = "DIRECT"
         self.string2 = "GUI"
-        self.parent.Evaluate(self.string2)
+        #self.parent.Evaluate(self.string2)
 
         for currentGeneretaion in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation()
@@ -19,7 +19,7 @@ class HILL_CLIMBER:
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
-        self.child.Evaluate(self.string)
+        #self.child.Evaluate(self.string)
         self.Print()
         self.Select()
 
@@ -28,6 +28,9 @@ class HILL_CLIMBER:
 
     def Mutate(self):
         self.child.Mutate()
+        print(self.child.weights)
+        print(self.parent.weights)
+        exit()
 
     def Select(self):
         if self.parent.fitness > self.child.fitness:

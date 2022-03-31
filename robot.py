@@ -49,7 +49,7 @@ class ROBOT:
         positionLinkOfZero = stateof[0]
         xCooridnateOfLinkZero = positionLinkOfZero[0]
         #print(positionLinkOfZero[0], xCooridnateOfLinkZero[1])
-        f = open("fitness{}.txt".format(Id), "w")
+        f = open("fitness{}.txt".format(str(Id)), "w")
         f.write(str(xCooridnateOfLinkZero))
 
 

@@ -9,11 +9,8 @@ import pyrosim.pyrosim as pyrosim
 
 class SOLUTION:
     def __init__(self, nextAvailableID):
-        self.weight = np.random.rand(3, 2) * 2 - 1
+        self.weights = np.random.rand(3, 2) * 2 - 1
         self.myID = str(nextAvailableID)
-
-
-
 
     def Set_ID(self, assignedID):
         self.myID = assignedID
@@ -47,14 +44,14 @@ class SOLUTION:
 
         for currentRow in range(3):
             for currentColumn in range(2):
-                pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn + 3, weight=self.weight[currentRow][currentColumn])
+                pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn + 3, weight=self.weights[currentRow][currentColumn])
 
         pyrosim.End()
 
     def Start_Simulation(self, directOrGui):
         self.Create_Brain()
         os.system("start /B python simulate.py {} {}".format(directOrGui, self.myID))
-
+        #os.system("start /B python simulate.py "+directOrGui+" "+self.myID)
 
     def Waiting_For_Simulation_To_End(self):
         fitnessFileName = "fitness{}.txt".format(self.myID)
@@ -62,15 +59,20 @@ class SOLUTION:
             time.sleep(0.01)
 
         file = open("fitness{}.txt".format(self.myID), "r")
-        self.fitness = float(file.read())
+        self.fitness = file.read()
         file.close()
+
         os.system('del fitness{}.txt'.format(self.myID))
 
 
     def Mutate(self):
         row = random.randint(0,2)
         col = random.randint(0,1)
-        self.weight[row][col] = random.random() * 2 - 1
+        self.weights[row][col] = random.random() * 2 - 1
+
+
+
+
 
 
 
