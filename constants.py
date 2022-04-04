@@ -4,7 +4,7 @@ import numpy
 
 length = 200
 
-numSensorNeurons = 8
+numSensorNeurons = 9
 numMotorNeurons = 8
 
 
