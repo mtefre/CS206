@@ -2,10 +2,10 @@
 import numpy
 
 
-length = 400
+length = 200
 
-numSensorNeurons = 3
-numMotorNeurons = 2
+numSensorNeurons = 8
+numMotorNeurons = 8
 
 
 amplitudeF = numpy.pi/2
