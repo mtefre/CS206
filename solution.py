@@ -76,7 +76,7 @@ class SOLUTION:
 
 
     def Start_Simulation(self, directOrGui):
-        #self.Create_Body()
+        self.Create_Body()
         self.Create_Brain()
         os.system("start /B python simulate.py {} {}".format(directOrGui, self.myID))
         #os.system("start /B python simulate.py "+directOrGui+" "+self.myID)
@@ -94,9 +94,11 @@ class SOLUTION:
 
 
     def Mutate(self):
-        row = random.randint(4,c.numSensorNeurons-1)
-        col = random.randint(0,c.numMotorNeurons-1)
+        row = random.randint(0,self.weights.shape[0] -1)
+        col = random.randint(0,self.weights.shape[1] -1)
         self.weights[row][col] = random.random() * 2 - 1
+
+
 
 
 

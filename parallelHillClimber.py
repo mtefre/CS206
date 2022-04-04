@@ -8,7 +8,6 @@ class PARALLEL_HILL_CLIMBER:
         os.system('del brain*.nndf')
         os.system('del fitness*.txt')
 
-
         self.parents = {}
         self.nextAvailableID = 0
 
@@ -19,10 +18,16 @@ class PARALLEL_HILL_CLIMBER:
     def Evolve(self):
         self.Evaluate(self.parents, 'DIRECT')
 
-
         for currentGeneretaion in range(c.numberOfGenerations):
-            self.Evolve_For_One_Generation()
+            self.Evolve_For_One_Generation('DIRECT')
 
+
+    def Evolve_For_One_Generation(self, directOrGUI):
+        self.Spawn()
+        self.Mutate()
+        self.Evaluate(self.childeren, directOrGUI)
+        self.Print()
+        self.Select()
 
     def Spawn(self):
         self.childeren = {}
@@ -32,41 +37,36 @@ class PARALLEL_HILL_CLIMBER:
             self.childeren[key].Set_ID(self.nextID)
             self.nextID +=1
 
-    def Evolve_For_One_Generation(self):
-        self.Spawn()
-        self.Mutate()
-        self.Evaluate(self.childeren, "DIRECT")
-        self.Print()
-        self.Select()
-
-    def Evaluate(self, solutions, gui):
-        for i in solutions:
-            solutions[i].Start_Simulation(gui)
-
-        for j in solutions:
-            solutions[j].Waiting_For_Simulation_To_End()
-
-
     def Mutate(self):
         for child in self.childeren:
             self.childeren[child].Mutate()
 
     def Select(self):
-        for i in self.parents:
-            if self.parents[i].fitness > self.childeren[i].fitness:
-                self.parents[i] = self.childeren[i]
+        for key in self.parents.keys():
+            if self.parents[key].fitness < self.childeren[key].fitness:
+                self.parents[key] = self.childeren[key]
+
+    def Show_Best(self):
+        best_loc = 0
+        best_fit = 0
+        for parent in self.parents:
+            if self.parents[parent].fitness < best_fit:
+                best_loc = parent
+                best_fit = self.parents[parent].fitness
+
+        self.parents[best_loc].Start_Simulation('GUI')
+        print("Best Fitness: ", self.parents[best_loc].fitness)
+        #self.parent.Evaluate(self.string2)
+
+    def Evaluate(self, solutions, gui):
+        for i in solutions:
+            solutions[i].Start_Simulation(gui)
+
+        for i in solutions:
+            solutions[i].Waiting_For_Simulation_To_End()
 
     def Print(self):
         print("")
         for parent in self.parents:
             print("parent: " + str(self.parents[parent].fitness) + " child: " + str(self.childeren[parent].fitness))
         print("")
-
-    def Show_Best(self):
-        best_solution = 0
-        for i in range(c.populationSize):
-            if self.parents[i].fitness > self.childeren[i].fitness:
-                best_solution = 1
-        self.parents[best_solution].Start_Simulation('GUI')
-        print("Best Fitness: ", self.parents[best_solution].fitness)
-        #self.parent.Evaluate(self.string2)
