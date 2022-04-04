@@ -76,7 +76,7 @@ class SOLUTION:
 
 
     def Start_Simulation(self, directOrGui):
-        self.Create_Body()
+        #self.Create_Body()
         self.Create_Brain()
         os.system("start /B python simulate.py {} {}".format(directOrGui, self.myID))
         #os.system("start /B python simulate.py "+directOrGui+" "+self.myID)
@@ -87,7 +87,7 @@ class SOLUTION:
             time.sleep(0.01)
 
         file = open("fitness{}.txt".format(self.myID), "r")
-        self.fitness = file.read()
+        self.fitness = float(file.read())
         file.close()
 
         os.system('del fitness{}.txt'.format(self.myID))
