@@ -28,7 +28,7 @@ class SIMULATION:
     def Run(self):
         count = 0
         for i in range(0, c.length):
-            time.sleep(1/100)
+            time.sleep(1/1000)
 
             p.stepSimulation()
             self.robot.Sense(i)

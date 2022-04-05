@@ -16,7 +16,7 @@ class PARALLEL_HILL_CLIMBER:
             self.nextAvailableID += 1
 
     def Evolve(self):
-        self.Evaluate(self.parents, 'DIRECT')
+        self.Evaluate(self.parents, 'GUI')
 
         for currentGeneretaion in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation('DIRECT')
@@ -54,7 +54,7 @@ class PARALLEL_HILL_CLIMBER:
                 best_loc = parent
                 best_fit = self.parents[parent].fitness
 
-        self.parents[best_loc].Start_Simulation('GUI')
+        self.parents[best_loc].Start_Simulation('DIRECT')
         print("Best Fitness: ", self.parents[best_loc].fitness)
         #self.parent.Evaluate(self.string2)
 
