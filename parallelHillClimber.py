@@ -16,7 +16,7 @@ class PARALLEL_HILL_CLIMBER:
             self.nextAvailableID += 1
 
     def Evolve(self):
-        self.Evaluate(self.parents, 'GUI')
+        self.Evaluate(self.parents, 'DIRECT')
 
         for currentGeneretaion in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation('DIRECT')
@@ -48,22 +48,22 @@ class PARALLEL_HILL_CLIMBER:
 
     def Show_Best(self):
         best_loc = 0
-        best_fit = 0
-        for parent in self.parents:
-            if self.parents[parent].fitness < best_fit:
+        best_fit = 1000
+        for parent in self.parents.keys():
+            if self.parents[parent].fitness > best_fit:
                 best_loc = parent
                 best_fit = self.parents[parent].fitness
 
-        self.parents[best_loc].Start_Simulation('DIRECT')
+        self.parents[best_loc].Start_Simulation('GUI')
         print("Best Fitness: ", self.parents[best_loc].fitness)
         #self.parent.Evaluate(self.string2)
 
     def Evaluate(self, solutions, gui):
         for i in solutions:
             solutions[i].Start_Simulation(gui)
-
         for i in solutions:
             solutions[i].Waiting_For_Simulation_To_End()
+
 
     def Print(self):
         print("")

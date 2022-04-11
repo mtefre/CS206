@@ -94,8 +94,8 @@ class SOLUTION:
 
 
     def Mutate(self):
-        row = random.randint(0,self.weights.shape[0] -1)
-        col = random.randint(0,self.weights.shape[1] -1)
+        row = random.randint(0,self.weights.shape[0] - 1)
+        col = random.randint(0,self.weights.shape[1] - 1)
         self.weights[row][col] = random.random() * 2 - 1
 
 
