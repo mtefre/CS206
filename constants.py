@@ -2,12 +2,12 @@
 import numpy
 
 
-length = 400
+length = 600
 
 numSensorNeurons = 9
-numMotorNeurons = 8
+numMotorNeurons = 12
 
-motorJointRange = 0.4
+motorJointRange = 0.3
 
 amplitudeF = numpy.pi/2
 frequencyF = 20
@@ -19,6 +19,6 @@ phaseOffsetB = numpy.pi/2
 
 graphline = numpy.linspace(0, 2*numpy.pi, length)
 
-numberOfGenerations = 5
+numberOfGenerations = 20
 
-populationSize = 5
+populationSize = 10

@@ -18,6 +18,7 @@ class PARALLEL_HILL_CLIMBER:
     def Evolve(self):
         self.Evaluate(self.parents, 'DIRECT')
 
+
         for currentGeneretaion in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation('DIRECT')
 
@@ -48,7 +49,7 @@ class PARALLEL_HILL_CLIMBER:
 
     def Show_Best(self):
         best_loc = 0
-        best_fit = 1000
+        best_fit = -1000
         for parent in self.parents.keys():
             if self.parents[parent].fitness > best_fit:
                 best_loc = parent
