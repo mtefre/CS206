@@ -43,13 +43,13 @@ class PARALLEL_HILL_CLIMBER:
             self.childeren[child].Mutate()
 
     def Select(self):
-        for key in self.parents.keys():
+        for key in self.parents:
             if self.parents[key].fitness < self.childeren[key].fitness:
                 self.parents[key] = self.childeren[key]
 
     def Show_Best(self):
         best_loc = 0
-        best_fit = -1000
+        best_fit = 1000
         for parent in self.parents.keys():
             if self.parents[parent].fitness > best_fit:
                 best_loc = parent
@@ -57,7 +57,7 @@ class PARALLEL_HILL_CLIMBER:
 
         self.parents[best_loc].Start_Simulation('GUI')
         print("Best Fitness: ", self.parents[best_loc].fitness)
-        #self.parent.Evaluate(self.string2)
+
 
     def Evaluate(self, solutions, gui):
         for i in solutions:

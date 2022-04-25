@@ -14,6 +14,6 @@ class MOTOR:
         pyrosim.Set_Motor_For_Joint(bodyIndex=robot,
                             jointName=self.jointName,
                             controlMode=p.POSITION_CONTROL,
-                            targetPosition=desiredAngle,
-                            maxForce=50)
+                            targetPosition= (desiredAngle),
+                            maxForce=25)
 
