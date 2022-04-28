@@ -282,7 +282,7 @@
             </geometry>
         </collision>
     </link>
-    <joint name="LeftLeftLeg_LowerLeftLeftLeg" type="revolute">
+    <joint name="LeftLeftLeg_LeftLeftLowerLeg" type="revolute">
        <parent link="LeftLeftLeg"/>
        <child  link="LeftLeftLowerLeg"/>
        <origin rpy="0 0 0" xyz="-1 0 0" />
@@ -340,7 +340,7 @@
             </geometry>
         </collision>
     </link>
-    <joint name="RightRightLeg_LowerRightRightLeg" type="revolute">
+    <joint name="RightRightLeg_RightRightLowerLeg" type="revolute">
        <parent link="RightRightLeg"/>
        <child  link="RightRightLowerLeg"/>
        <origin rpy="0 0 0" xyz="1 0 0" />
