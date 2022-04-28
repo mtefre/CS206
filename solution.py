@@ -99,7 +99,6 @@ class SOLUTION:
 
 
     def Start_Simulation(self, directOrGui):
-        self.Create_Body()
         self.Create_Brain()
         os.system("start /B python simulate.py {} {}".format(directOrGui, self.myID))
         #os.system("start /B python simulate.py "+directOrGui+" "+self.myID)

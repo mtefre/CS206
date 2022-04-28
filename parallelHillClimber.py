@@ -1,5 +1,6 @@
 from solution import SOLUTION
 import os
+import numpy
 import constants as c
 import copy
 class PARALLEL_HILL_CLIMBER:
@@ -7,7 +8,6 @@ class PARALLEL_HILL_CLIMBER:
         #self.parent = SOLUTION()
         os.system('del brain*.nndf')
         os.system('del fitness*.txt')
-
         self.parents = {}
         self.nextAvailableID = 0
 
@@ -19,7 +19,7 @@ class PARALLEL_HILL_CLIMBER:
         self.Evaluate(self.parents, 'DIRECT')
 
 
-        for currentGeneretaion in range(c.numberOfGenerations):
+        for currentGeneretaion in range(0, c.numberOfGenerations):
             self.Evolve_For_One_Generation('DIRECT')
 
 
@@ -67,7 +67,15 @@ class PARALLEL_HILL_CLIMBER:
 
 
     def Print(self):
-        print("")
+        print(" ")
+        bestFitness = numpy.zeros(c.populationSize)
+        best_loc = 0
+        best_fit = -1000
         for parent in self.parents:
             print("parent: " + str(self.parents[parent].fitness) + " child: " + str(self.childeren[parent].fitness))
-        print("")
+            if self.parents[parent].fitness > best_fit:
+                best_loc = parent
+                best_fit = self.parents[parent].fitness
+            bestFitness[parent] = self.parents[best_loc].fitness
+
+        numpy.save(os.path.join('data', "BestFitnessA"), bestFitness)

@@ -4,10 +4,12 @@ import pybullet_data
 
 import numpy
 import constants as c
-import pyrosim.pyrosim
+import os
 
 from world import WORLD
 from robot import ROBOT
+
+# bestFitness = numpy.zeros(c.length)
 
 class SIMULATION:
     def __init__(self, directOrGui, SolutionID):
@@ -24,20 +26,15 @@ class SIMULATION:
         self.robot = ROBOT(SolutionID)
 
 
-
     def Run(self):
-        count = 0
+
         for i in range(0, c.length):
-
-
             p.stepSimulation()
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act()
 
             time.sleep(1 / 100)
-
-
 
 
     def Get_Fitness(self):
