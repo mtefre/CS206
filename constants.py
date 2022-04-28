@@ -4,7 +4,7 @@ import numpy
 
 length = 100
 
-numSensorNeurons = 8
+numSensorNeurons = 6
 numMotorNeurons = 12
 
 motorJointRange = 0.2

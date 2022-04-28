@@ -68,7 +68,7 @@ class PARALLEL_HILL_CLIMBER:
 
     def Print(self):
         print(" ")
-        bestFitness = numpy.zeros(c.populationSize)
+        bestFitness2 = numpy.zeros(c.populationSize)
         best_loc = 0
         best_fit = -1000
         for parent in self.parents:
@@ -76,6 +76,6 @@ class PARALLEL_HILL_CLIMBER:
             if self.parents[parent].fitness > best_fit:
                 best_loc = parent
                 best_fit = self.parents[parent].fitness
-            bestFitness[parent] = self.parents[best_loc].fitness
+            bestFitness2[parent] = self.parents[best_loc].fitness
 
-        numpy.save(os.path.join('data', "BestFitnessA"), bestFitness)
+        numpy.save(os.path.join('data2', "BestFitnessB"), bestFitness2)

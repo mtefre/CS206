@@ -1,14 +1,15 @@
 import numpy
 import matplotlib.pyplot as plt
 
-time = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
-value = (0.10,0.55,0.99,1.1,1.2,1.1,1.11,1.51,1.641, 2.151, 2.24, 2.24, 2.24, 2.24, 2.24, 2.24, 2.24, 2.24, 2.24,2.24)
+time = (0, 10, 20, 30, 40)
+data = (1.3, 1.5, 2.4, 3.1, 3.3)
 
-backLegSensorValues = numpy.load('data/BestFitnessA.npy')
+RobotA = numpy.load('data/BestFitnessA.npy')
+RobotB = numpy.load('data2/BestFitnessB.npy')
 
-
-plt.plot(backLegSensorValues, label="BackLeg", linewidth=2.8)
-
+plt.plot(time, data, label= "Test")
+plt.plot(RobotA, label="RobotA", linewidth=2.8)
+plt.plot(RobotA, label="RobotB", linewidth=0.8)
 
 plt.legend(loc='upper right')
 plt.show()
