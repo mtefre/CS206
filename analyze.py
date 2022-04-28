@@ -7,9 +7,9 @@ value = (0.10,0.55,0.99,1.1,1.2,1.1,1.11,1.51,1.641, 2.151, 2.24, 2.24, 2.24, 2.
 backLegSensorValues = numpy.load('data/BestFitnessA.npy')
 
 
-plt.plot(backLegSensorValues, label="BackLeg", linewidth=2.8)
+plt.plot(backLegSensorValues, label="Fitness", linewidth=2.8)
 
 
-plt.legend(loc='upper right')
+plt.legend(loc='center right')
 plt.show()
 

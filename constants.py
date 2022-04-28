@@ -2,7 +2,7 @@
 import numpy
 
 
-length = 400
+length = 700
 
 numSensorNeurons = 8
 numMotorNeurons = 12
