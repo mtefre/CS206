@@ -5,7 +5,7 @@ import constants as c
 import copy
 class PARALLEL_HILL_CLIMBER:
     def __init__(self):
-        #self.parent = SOLUTION()
+
         os.system('del brain*.nndf')
         os.system('del fitness*.txt')
         self.parents = {}
