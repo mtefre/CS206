@@ -2,7 +2,7 @@
 import numpy
 
 
-length = 700
+length = 500
 
 numSensorNeurons = 8
 numMotorNeurons = 12
@@ -19,6 +19,6 @@ phaseOffsetB = numpy.pi/2
 
 graphline = numpy.linspace(0, 2*numpy.pi, length)
 
-numberOfGenerations = 40
+numberOfGenerations = 30
 
-populationSize = 40
+populationSize = 30

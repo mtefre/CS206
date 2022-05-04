@@ -111,8 +111,8 @@ class SOLUTION:
         file = open("fitness{}.txt".format(self.myID), "r")
         self.fitness = float(file.read())
 
-        os.system('del fitness{}.txt'.format(self.myID))
         file.close()
+        os.system('del fitness{}.txt'.format(self.myID))
 
 
     def Mutate(self):
